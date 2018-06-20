@@ -2,6 +2,8 @@
 
 A CLI that extract har file to directory.
 
+- [HTTP Archive (HAR) format](https://w3c.github.io/web-performance/specs/HAR/Overview.html "HTTP Archive (HAR) format")
+
 ## Install
 
 Install with [npm](https://www.npmjs.com/):
@@ -40,6 +42,13 @@ wikipedia/en.wikipedia.org/static/images/poweredby_mediawiki_176x62.png
 wikipedia/en.wikipedia.org/w/load.php!debug=false&lang=en&modules=jquery,mediawiki!mediawiki.legacy.wikibits&only=scripts&skin=ve
 wikipedia/en.wikipedia.org/static/images/mobile/copyright/wikipedia-wordmark-en.svg
 ```
+
+## References
+
+* [HAR 1.2 Spec | Software is hard](http://www.softwareishard.com/blog/har-12-spec/ "HAR 1.2 Spec | Software is hard")
+* [HTTP Archive (HAR) format](https://w3c.github.io/web-performance/specs/HAR/Overview.html "HTTP Archive (HAR) format")
+* [micmro/har-format-ts-declaration: TypeScript typing for HAR (HTTP Archive) 1.2](https://github.com/micmro/har-format-ts-declaration "micmro/har-format-ts-declaration: TypeScript typing for HAR (HTTP Archive) 1.2")
+
 
 
 ## Changelog
