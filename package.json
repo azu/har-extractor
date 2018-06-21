@@ -1,6 +1,6 @@
 {
   "name": "har-extractor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A CLI that extract har file to directory.",
   "keywords": [
     "archieve",
