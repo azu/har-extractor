@@ -21,4 +21,16 @@ describe("har-extractor", () => {
         });
         assert.ok(outputFiles.length > 0);
     });
+    it("should extract to output directory", () => {
+        const inputFile = JSON.parse(
+            fs.readFileSync(path.join(__dirname, "fixtures/hatebupwa.netlify.com.har"), "utf-8")
+        );
+        extract(inputFile, {
+            outputDir: outputDir
+        });
+        const outputFiles = glob.sync(`${outputDir}/**`, {
+            nodir: true
+        });
+        assert.ok(outputFiles.length > 0);
+    });
 });
