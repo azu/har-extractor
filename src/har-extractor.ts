@@ -44,7 +44,9 @@ export const extract = (harContent: Har, options: ExtractOptions) => {
             return;
         }
         const outputPath = path.join(options.outputDir, convertEntryAsFilePathFormat(entry));
-        makeDir.sync(path.dirname(outputPath));
+        if (!options.dryRun) {
+            makeDir.sync(path.dirname(outputPath));
+        }
         if (options.verbose) {
             console.log(outputPath);
         }
