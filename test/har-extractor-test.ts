@@ -33,4 +33,15 @@ describe("har-extractor", () => {
         });
         assert.ok(outputFiles.length > 0);
     });
+    it("should respect --dry-run", () => {
+        const inputFile = JSON.parse(fs.readFileSync(path.join(__dirname, "fixtures/en.wikipedia.org.har"), "utf-8"));
+        extract(inputFile, {
+            outputDir: outputDir,
+            dryRun: true
+        });
+        const outputFiles = glob.sync(`${outputDir}/**`, {
+            nodir: true
+        });
+        assert.ok(outputFiles.length === 0);
+    });
 });
