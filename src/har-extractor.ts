@@ -25,7 +25,7 @@ export const convertEntryAsFilePathFormat = (entry: Entry): string => {
         return filenamify(pathname);
     });
     const fileName = dirnames[dirnames.length - 1];
-    if (!fileName.includes(".html") && entry.response.content.mimeType === "text/html") {
+    if (!fileName.includes(".html") && entry.response.content.mimeType.includes("text/html")) {
         return dirnames.join("/") + "/index.html";
     }
     return dirnames.join("/");
