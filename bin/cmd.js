@@ -11,6 +11,7 @@ const cli = meow(
 
     Options:
       --output, -o Output directory
+      --remove-query-string, -r Remove query string from file path
       --dry-run Enable dry run mode
       --verbose Show processing file path
 
@@ -22,6 +23,11 @@ const cli = meow(
             output: {
                 type: "string",
                 alias: "o"
+            },
+            removeQueryString: {
+                type: "boolean",
+                alias: "r",
+                default: false
             },
             verbose: {
                 type: "boolean",
@@ -45,6 +51,7 @@ try {
     extract(harContent, {
         verbose: cli.flags.verbose,
         dryRun: cli.flags.dryRun,
+        removeQueryString: cli.flags.removeQueryString,
         outputDir: cli.flags.output
     });
 } catch (error) {

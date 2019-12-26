@@ -19,6 +19,7 @@ Install with [npm](https://www.npmjs.com/):
 
     Options:
       --output, -o Output directory
+      --remove-query-string, -r Remove query string from file path
       --dry-run Enable dry run mode
       --verbose Show processing file path
 
