@@ -51,20 +51,20 @@
     "tabWidth": 4
   },
   "devDependencies": {
-    "@types/har-format": "^1.2.3",
-    "@types/mocha": "^5.2.2",
-    "@types/node": "^10.3.4",
-    "cross-env": "^5.2.0",
-    "del": "^3.0.0",
-    "glob": "^7.1.2",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.2.0",
-    "mocha": "^5.2.0",
-    "prettier": "^1.13.5",
-    "rimraf": "^2.6.2",
-    "ts-node": "^6.1.1",
-    "ts-node-test-register": "^3.0.0",
-    "typescript": "^2.9.2"
+    "@types/har-format": "^1.2.4",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^13.1.1",
+    "cross-env": "^6.0.3",
+    "del": "^5.1.0",
+    "glob": "^7.1.6",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "mocha": "^6.2.2",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.5.4",
+    "ts-node-test-register": "^8.0.1",
+    "typescript": "^3.7.4"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css}": [
