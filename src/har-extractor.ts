@@ -18,9 +18,9 @@ export const getEntryContentAsBuffer = (entry: Entry): Buffer | undefined => {
     }
 };
 
-export const convertEntryAsFilePathFormat = (entry: Entry): string => {
+export const convertEntryAsFilePathFormat = (entry: Entry, removeQueryString: boolean = false): string => {
     const requestURL = entry.request.url;
-    const stripSchemaURL: string = humanizeUrl(requestURL);
+    const stripSchemaURL: string = humanizeUrl(removeQueryString ? requestURL.split("?")[0] : requestURL);
     const dirnames: string[] = stripSchemaURL.split("/").map(pathname => {
         return filenamify(pathname);
     });
@@ -35,6 +35,7 @@ export interface ExtractOptions {
     outputDir: string;
     verbose?: boolean;
     dryRun?: boolean;
+    removeQueryString?: boolean;
 }
 
 export const extract = (harContent: Har, options: ExtractOptions) => {
@@ -43,7 +44,7 @@ export const extract = (harContent: Har, options: ExtractOptions) => {
         if (!buffer) {
             return;
         }
-        const outputPath = path.join(options.outputDir, convertEntryAsFilePathFormat(entry));
+        const outputPath = path.join(options.outputDir, convertEntryAsFilePathFormat(entry, options.removeQueryString));
         if (!options.dryRun) {
             makeDir.sync(path.dirname(outputPath));
         }
