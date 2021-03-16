@@ -21,11 +21,16 @@ export const getEntryContentAsBuffer = (entry: Entry): Buffer | undefined => {
 export const convertEntryAsFilePathFormat = (entry: Entry, removeQueryString: boolean = false): string => {
     const requestURL = entry.request.url;
     const stripSchemaURL: string = humanizeUrl(removeQueryString ? requestURL.split("?")[0] : requestURL);
-    const dirnames: string[] = stripSchemaURL.split("/").map(pathname => {
+    const dirnames: string[] = stripSchemaURL.split("/").map((pathname) => {
         return filenamify(pathname);
     });
     const fileName = dirnames[dirnames.length - 1];
-    if (!fileName.includes(".html") && entry.response.content.mimeType.includes("text/html")) {
+    if (
+        fileName &&
+        !fileName.includes(".html") &&
+        entry.response.content.mimeType &&
+        entry.response.content.mimeType.includes("text/html")
+    ) {
         return dirnames.join("/") + "/index.html";
     }
     return dirnames.join("/");
@@ -39,7 +44,7 @@ export interface ExtractOptions {
 }
 
 export const extract = (harContent: Har, options: ExtractOptions) => {
-    harContent.log.entries.forEach(entry => {
+    harContent.log.entries.forEach((entry) => {
         const buffer = getEntryContentAsBuffer(entry);
         if (!buffer) {
             return;

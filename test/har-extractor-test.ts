@@ -14,10 +14,20 @@ describe("har-extractor", () => {
     it("should extract to output directory", () => {
         const inputFile = JSON.parse(fs.readFileSync(path.join(__dirname, "fixtures/en.wikipedia.org.har"), "utf-8"));
         extract(inputFile, {
-            outputDir: outputDir
+            outputDir: outputDir,
         });
         const outputFiles = glob.sync(`${outputDir}/**`, {
-            nodir: true
+            nodir: true,
+        });
+        assert.ok(outputFiles.length > 0);
+    });
+    it("should extract https://github.com/azu/har-extractor/issues/6", () => {
+        const inputFile = JSON.parse(fs.readFileSync(path.join(__dirname, "fixtures/seventow.har"), "utf-8"));
+        extract(inputFile, {
+            outputDir: outputDir,
+        });
+        const outputFiles = glob.sync(`${outputDir}/**`, {
+            nodir: true,
         });
         assert.ok(outputFiles.length > 0);
     });
@@ -26,10 +36,10 @@ describe("har-extractor", () => {
             fs.readFileSync(path.join(__dirname, "fixtures/hatebupwa.netlify.com.har"), "utf-8")
         );
         extract(inputFile, {
-            outputDir: outputDir
+            outputDir: outputDir,
         });
         const outputFiles = glob.sync(`${outputDir}/**`, {
-            nodir: true
+            nodir: true,
         });
         assert.ok(outputFiles.length > 0);
     });
@@ -37,10 +47,10 @@ describe("har-extractor", () => {
         const inputFile = JSON.parse(fs.readFileSync(path.join(__dirname, "fixtures/en.wikipedia.org.har"), "utf-8"));
         extract(inputFile, {
             outputDir: outputDir,
-            dryRun: true
+            dryRun: true,
         });
         const outputFiles = glob.sync(`${outputDir}/**`, {
-            nodir: true
+            nodir: true,
         });
         assert.ok(outputFiles.length === 0);
     });
