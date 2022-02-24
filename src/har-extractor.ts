@@ -22,7 +22,7 @@ export const convertEntryAsFilePathFormat = (entry: Entry, removeQueryString: bo
     const requestURL = entry.request.url;
     const stripSchemaURL: string = humanizeUrl(removeQueryString ? requestURL.split("?")[0] : requestURL);
     const dirnames: string[] = stripSchemaURL.split("/").map((pathname) => {
-        return filenamify(pathname);
+        return filenamify(pathname, {maxLength: 255});
     });
     const fileName = dirnames[dirnames.length - 1];
     if (
