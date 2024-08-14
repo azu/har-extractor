@@ -22,7 +22,7 @@ export const convertEntryAsFilePathFormat = (entry: Entry, removeQueryString: bo
     const requestURL = entry.request.url;
     const stripSchemaURL: string = humanizeUrl(removeQueryString ? requestURL.split("?")[0] : requestURL);
     const dirnames: string[] = stripSchemaURL.split("/").map((pathname) => {
-        return filenamify(pathname, {maxLength: 255});
+        return filenamify(pathname, { maxLength: 255 });
     });
     const fileName = dirnames[dirnames.length - 1];
     if (
@@ -58,7 +58,7 @@ const ensureDir = (dirPath: string): void => {
                 const fileContent = fs.readFileSync(subPath); // Read the file content
                 fs.unlinkSync(subPath); // Remove the file
                 fs.mkdirSync(subPath); // Create the directory
-                fs.writeFileSync(path.join(subPath, 'index'), fileContent); // Write the file content to index
+                fs.writeFileSync(path.join(subPath, "index"), fileContent); // Write the file content to index
             }
         } else {
             // If subPath does not exist, create the directory
@@ -79,8 +79,8 @@ export const extract = (harContent: Har, options: ExtractOptions) => {
         if (!options.dryRun && outputDir.length > 0) {
             try {
                 ensureDir(outputDir);
-            } catch (error) {
-                if (error.code !== 'EEXIST') {
+            } catch (error: any) {
+                if (error?.code !== "EEXIST") {
                     throw error;
                 }
             }
