@@ -8,7 +8,7 @@ const makeDir = require("make-dir");
 export const getEntryContentAsBuffer = (entry: Entry): Buffer | undefined => {
     const content = entry.response.content;
     const text = content.text;
-    if (text === undefined) {
+    if (text === undefined || text === '') {
         return;
     }
     if (content.encoding === "base64") {
