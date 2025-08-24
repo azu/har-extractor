@@ -11,9 +11,9 @@ jobs:
         node-version: [ 20, 22, 24 ]
     steps:
       - name: checkout
-        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - name: setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@f1f314fca9dfce2769ece7d933488f076716723e # v1.4.6
+        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install
