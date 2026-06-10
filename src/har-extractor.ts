@@ -52,6 +52,9 @@ const ensureDir = (dirPath: string): void => {
     for (let i = 1; i <= parts.length; i++) {
         const subPath = parts.slice(0, i).join(path.sep);
 
+        // absolute paths: parts[0] == ""
+        if (!subPath) continue;
+
         if (fs.existsSync(subPath)) {
             if (fs.lstatSync(subPath).isFile()) {
                 // If subPath is a file, move it to an index file within a new directory
