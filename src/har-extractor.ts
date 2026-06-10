@@ -76,7 +76,7 @@ export const extract = (harContent: Har, options: ExtractOptions) => {
         if (!buffer) {
             return;
         }
-        const outputPath = path.join(options.outputDir, convertEntryAsFilePathFormat(entry, options.removeQueryString));
+        let outputPath = path.join(options.outputDir, convertEntryAsFilePathFormat(entry, options.removeQueryString));
         const outputDir = path.dirname(outputPath);
 
         if (!options.dryRun && outputDir.length > 0) {
@@ -86,6 +86,15 @@ export const extract = (harContent: Har, options: ExtractOptions) => {
                 if (error.code !== 'EEXIST') {
                     throw error;
                 }
+            }
+        }
+
+        if (fs.existsSync(outputPath)) {
+            const fileStat = fs.lstatSync(outputPath);
+            if (fileStat.isDirectory()) {
+                // path 1: path/to/file
+                // path 2: path/to
+                outputPath += path.sep + "index";
             }
         }
 
